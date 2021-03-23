@@ -6,3 +6,5 @@
 实现lab1-pingpong，3/23。   
 实现lab1-primes，3/23。
 实现lab1-find，3/23。
+实现lab1-xargs，3/23。
+实现测试。
