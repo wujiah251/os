@@ -12,4 +12,5 @@
 ## lab2
 
 实现lab2-trace，3/27。  
+实现lab2-sysinfo，3/27。  
 
