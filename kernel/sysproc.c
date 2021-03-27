@@ -95,3 +95,17 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+// trace系统调用
+uint64
+sys_trace(void){
+  int n;
+  // 把参数读取到n，这样可以知道是哪个系统调用
+  // 0表示获得之前a0寄存器存的值
+  if(argint(0, &n)<0)
+    return -1;
+  struct proc *p = myproc();
+  int *mask = &(p->mask);
+  *mask=n;
+  return 0;
+}
