@@ -14,6 +14,8 @@ sub entry {
     print " ecall\n";
     print " ret\n";
 }
+# 这段代码仔细读读应该能了解大概意思，让我大概理清了过程
+# 比如以trace为例，user/trace.c调用trace系统调用 -> markfile调用usys.pl代码通过汇编进入内核 -> 获得跟踪结果输出到屏幕
 # 上述我们可以发现调用规则是前面加"SYS_"
 
 entry("fork");
