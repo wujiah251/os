@@ -91,6 +91,8 @@ walk(pagetable_t pagetable, uint64 va, int alloc)
 // Look up a virtual address, return the physical address,
 // or 0 if not mapped.
 // Can only be used to look up user pages.
+// 查找一个虚拟地址，返回物理地址
+// 只能用于查找用户页
 uint64
 walkaddr(pagetable_t pagetable, uint64 va)
 {
@@ -351,6 +353,7 @@ uvmclear(pagetable_t pagetable, uint64 va)
 // Copy from kernel to user.
 // Copy len bytes from src to virtual address dstva in a given page table.
 // Return 0 on success, -1 on error.
+// 从内核缓冲区拷贝到用户缓冲区
 int
 copyout(pagetable_t pagetable, uint64 dstva, char *src, uint64 len)
 {
@@ -358,6 +361,7 @@ copyout(pagetable_t pagetable, uint64 dstva, char *src, uint64 len)
 
   while(len > 0){
     va0 = PGROUNDDOWN(dstva);
+    // 给一个虚拟地址返回物理地址
     pa0 = walkaddr(pagetable, va0);
     if(pa0 == 0)
       return -1;

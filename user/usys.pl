@@ -14,7 +14,8 @@ sub entry {
     print " ecall\n";
     print " ret\n";
 }
-	
+# 上述我们可以发现调用规则是前面加"SYS_"
+
 entry("fork");
 entry("exit");
 entry("wait");
@@ -37,3 +38,4 @@ entry("sbrk");
 entry("sleep");
 entry("uptime");
 entry("trace");
+entry("sysinfo");

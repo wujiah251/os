@@ -693,3 +693,15 @@ procdump(void)
     printf("\n");
   }
 }
+
+// 新增函数proc_num，可用于获取进程数目
+int
+proc_num(void){
+  uint64 num = 0;
+  // 遍历计数
+  for(int i=0;i<NPROC;++i){
+    if(proc[i].state !=UNUSED)
+      ++num;
+  }
+  return num;
+}

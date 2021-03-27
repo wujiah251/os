@@ -1,5 +1,6 @@
 struct stat;
 struct rtcdate;
+struct sysinfo; //打印可用空间（字节数）和可用进程数
 
 // system calls
 int fork(void);
@@ -24,6 +25,8 @@ char* sbrk(int);
 int sleep(int);
 int uptime(void);
 int trace(int);
+int sysinfo(struct sysinfo*);
+
 
 // ulib.c
 int stat(const char*, struct stat*);
