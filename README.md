@@ -14,3 +14,7 @@
 实现lab2-trace，3/27。  
 实现lab2-sysinfo，3/27。  
 
+## lab3
+
+实现lab3-vmprint，3/30。  
+
