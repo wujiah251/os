@@ -258,10 +258,10 @@ growproc(int n)
 int
 fork(void)
 {
-  int i, pid;
+  int i, pid, j;
   struct proc *np;
   struct proc *p = myproc();
-
+  pte_t *pte, *kernelPte;
   // Allocate process.
   if((np = allocproc()) == 0){
     return -1;
@@ -273,6 +273,13 @@ fork(void)
     release(&np->lock);
     return -1;
   }
+  // 将进程页表的mapping，复制一份到进程内核页表
+  for(j = 0; j < p->sz; j+=PGSIZE){
+    pte = walk(np->pagetable, j, 0);
+    kernelPte = walk(np->kernelPageTable, j, 1);
+    *kernelPte = (*pte) & ~PTE_U;
+  }
+
   np->sz = p->sz;
 
   np->parent = p;
